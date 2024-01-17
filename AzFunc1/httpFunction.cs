@@ -4,6 +4,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -16,7 +17,8 @@ namespace AzFunc1
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("C# HTTP trigger function processed a request.");
 
             string name = req.Query["name"];
 
