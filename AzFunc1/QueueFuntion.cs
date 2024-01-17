@@ -10,7 +10,17 @@ namespace AzFunc1
         [FunctionName("QueueFuntion")]
         public void Run([QueueTrigger("example-queue", Connection = "AzureWebJobsStorage")]string myQueueItem, ILogger log)
         {
-            log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
+            try
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("C# Queue Trigger function processed a request.");
+                Console.WriteLine($"Processing message: {myQueueItem}");
+            }
+            catch (Exception ex)
+            {
+                log.LogError($"Error processing message: {myQueueItem}. Error: {ex.Message}");
+                throw;
+            }
         }
     }
 }
