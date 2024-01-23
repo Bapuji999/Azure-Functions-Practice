@@ -8,7 +8,7 @@ namespace AzFunc1
     public class QueueFuntion
     {
         [FunctionName("QueueFuntion")]
-        public void Run([QueueTrigger("example-queue", Connection = "AzureWebJobsStorage")]string myQueueItem, ILogger log)
+        public void Run([QueueTrigger("%example-queue%", Connection = "AzureWebJobsStorage")]string myQueueItem, ILogger log)
         {
             try
             {
